@@ -1,0 +1,156 @@
+{% load static %}
+{% include 'index.html'%}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table,th,td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th,td{text-align:center;}
+.maintitle{display:none;}
+
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  margin: 20px 500px;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<script>
+        $('.homeTb').removeClass("active");
+        $('.studentsTab').addClass("active");
+        </script>
+<body>
+<center>
+    <h2>Students</h2>
+</center>
+
+
+<table style="width:100%;font-family: latolight;">
+  <tr>
+    <th>ID</th>
+    <th>Name</th> 
+    <th>Mobile</th>
+    <th>Email</th>
+    <th>Cource</th> 
+    <th>Source</th>
+    <th>LeadStatus</th>
+    <th>DemoDate</th> 
+    <th>Counselor</th>
+    <th>Remarks</th>
+  </tr>
+  {% for i in cstudents %}
+  <tr>
+      <td>{{i.id}}</td>
+      <td>{{i.name}}</td>
+      <td>{{i.mobile}}</td>
+      <td>{{i.email}}</td>
+      <td>{{i.course}}</td>
+      <td>{{i.source}}</td>
+      <td>{{i.leadstatus}}</td>
+      <td>{{i.demodate}}</td>
+      <td>{{i.counsler}}</td>
+      <td>{{i.remarks}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<center>
+    <h2>Ongoing students</h2>
+</center>
+<table style="width:100%;font-family: latolight;">
+	<thead>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Mobile</th>
+		<th>Email</th>
+		<th>Course</th>
+		<th>Completion</th>
+		<th>Date of joining</th>
+		<th>Course Fee</th>
+		<th>Instructor</th>
+		<th>Aadhar</th>
+		<th>Remarks</th>
+		<th>Status</th>
+	</thead>
+	<tbody>
+		{% for i in ostudents %}
+		<tr>
+			<td>{{i.id}}</td>
+			<td>{{i.email.name}}</td>
+			<td>{{i.email.mobile}}</td>
+			<td>{{i.email.email}}</td>
+			<td>{{i.email.course}}</td>
+			<td>{{i.completiondate}}</td>
+			<td>{{i.datejoining}}</td>
+			<td>{{i.coursefee}}</td>
+			<td>{{i.instructor}}</td>
+			<td>{{i.aadhar}}</td>
+			<td>{{i.email.remarks}}</td>
+			<td>{{i.customerstatus}}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<center>
+    <h2>Discontinude students</h2>
+</center>
+<table style="width:100%;font-family: latolight;">
+	<thead>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Mobile</th>
+		<th>Email</th>
+		<th>Course</th>
+		<th>Completion</th>
+		<th>Date of joining</th>
+		<th>Course Fee</th>
+		<th>Instructor</th>
+		<th>Aadhar</th>
+		<th>Remarks</th>
+		<th>Status</th>
+		<th>Rejoin</th>
+	</thead>
+	<tbody>
+		{% for i in sstudents %}
+		<tr>
+			<td>{{i.id}}</td>
+			<td>{{i.email.name}}</td>
+			<td>{{i.email.mobile}}</td>
+			<td>{{i.email.email}}</td>
+			<td>{{i.email.course}}</td>
+			<td>{{i.completiondate}}</td>
+			<td>{{i.datejoining}}</td>
+			<td>{{i.coursefee}}</td>
+			<td>{{i.instructor}}</td>
+			<td>{{i.aadhar}}</td>
+			<td>{{i.email.remarks}}</td>
+			<td>{{i.customerstatus}}</td>
+		    <td><a href="{% url 'update' i.id %}" class="btn btn-primary" role="button" aria-pressed="true">Rejoin</a>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+ </body>
+</html>
+{% endblock %}
+
+
+
+
+

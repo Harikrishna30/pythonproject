@@ -1,0 +1,75 @@
+{% load static %}
+{% include 'index.html'%}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'css/registation.css' %}" crossorigin="anonymous">
+
+</head>
+<script>
+        $('.homeTb').removeClass("active");
+        $('.registerTab').addClass("active");
+        </script>
+<body>
+
+<form method = 'POST'>{% csrf_token %}
+  <div class="container">
+    <!-- <h1>Register</h1> -->
+    <label for="name"><b>Name:</b></label>
+    <input type="text" placeholder="Enter name" name="name" required>
+
+    <label for="email"><b>Email:</b></label>
+    <input type="text" placeholder="Enter email" name="email" required>
+
+    <label for="mobile"><b>Mobile:</b></label>
+    <input type="text" placeholder="Enter mobilenumber" name="mobile" required>
+
+    <label for="course"><b>course:</b></label>
+    <input type="text" placeholder="default" name="course" list="course"required>
+    <datalist id="course">
+            <option value="Python">
+            <option value="Data science">
+            <option value="Big Data">
+    </datalist>
+
+    <label for="Source"><b>Source:</b></label>
+    <input type="text" placeholder="socialnetorks" name="source" list="Source" required>
+    <datalist id="Source">
+            <option value="Website">
+            <option value="sulekha">
+            <option value="LinkedIn">
+    </datalist>
+
+    <label for="lead"><b>lead-status:</b></label>
+    <!-- <input type="text" placeholder="enter " name="email" required> -->
+    <input type="text"placeholder="Default" name="leadstatus" list="lead" required>
+    <datalist id="lead">
+      <option value="Demo">
+      <option value="callback">
+    </datalist>
+
+    <label for="date"><b>Demo date:</b></label><br>
+    <input type="date" placeholder="dd-mm-yyyy" name="demodate" required style="width: 96%;padding: 8px;margin: 0 0 8px 0;display: inline-block;border: none;"><br>
+
+    <label for="counsler"><b>counsler:</b></label>
+    <input type="text" placeholder="Enter counsler name" name="counsler" required>
+
+    <label for="remarks"><b>Remarks:</b></label>
+    <input type="text" placeholder="Enter remarks" name="remarks" required>
+
+    <button type="submit" class="registerbtn">+ADD</button>
+  </div>
+
+</form>
+</body>
+
+</html>
+
+
+{% endblock %}

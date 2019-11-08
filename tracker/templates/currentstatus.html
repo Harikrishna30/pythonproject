@@ -1,0 +1,62 @@
+{% include 'index.html'%}
+
+{% block content %}
+<style>
+table,th,td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th,td{text-align:center;}
+.maintitle{display:none;}
+
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  margin: 20px 500px;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+</style>
+<script>
+        $('.homeTb').removeClass("active");
+        $('.currentStatusTab').addClass("active");
+</script>
+<center>
+<h2>currentStatus</h2>
+</center>
+<table style="width:100%;font-family: latolight;">
+    <thead>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Mobile</th>
+		<th>Email</th>
+		<th>Course</th>
+		<th>Completion</th>
+		<th>Date of joining</th>
+		<th>Complete</th>
+		<th>Delay</th>
+		<th>Dead</th>
+	</thead>
+	<tbody>
+		{% for i in student %}
+		<tr>
+			<td>{{i.id}}</td>
+			<td>{{i.email.name}}</td>
+			<td>{{i.email.mobile}}</td>
+			<td>{{i.email.email}}</td>
+			<td>{{i.email.course}}</td>
+			<td>{{i.completiondate}}</td>
+			<td>{{i.datejoining}}</td>
+            <td><a href="{% url 'complete' i.id %}" class="btn btn-success" role="button" aria-pressed="true">Complete</a>
+            <td><a href="{% url 'update' i.id %}" class="btn btn-dark" role="button" aria-pressed="true">Delay</a>
+            <td><a href="{% url 'stopped' i.id %}" class="btn btn-danger" role="button" aria-pressed="true">Dead</a>
+
+		</tr>
+		{% endfor %}
+	</tbody>
+
+{% endblock %}

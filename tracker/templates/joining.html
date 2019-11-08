@@ -1,0 +1,69 @@
+{% load static %}
+{% include 'index.html'%}
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/registation.css' %}" crossorigin="anonymous">
+
+    <title>joingpage</title>
+</head>
+<script>
+    $('.homeTb').removeClass("active");
+    $('.JoiningTab').addClass("active");
+</script>
+<body>
+    <!-- <h1>joiningpage</h1> -->
+    <form method = 'POST'>{% csrf_token %}
+        <div class="container">
+          <label for="name"><b>Name:</b></label>
+          <input type="text" placeholder="Enter name" name="name" required>
+
+          <label for="course"><b>course:</b></label>
+          <input type="text" placeholder="default" name="course" list="course"required>
+           <datalist id="course">
+                <option value="Python">
+                <option value="Data science">
+                <option value="Big Data">
+            </datalist>
+            <label for="Source"><b>Source:</b></label>
+            <input type="text" placeholder="socialnetorks" name="source" list="Source" required>
+            <datalist id="Source">
+                <option value="Website">
+                <option value="sulekha">
+                <option value="LinkedIn">
+            </datalist>
+      
+            <label for="date"><b>Date of joining:</b></label><br>
+            <input type="date" placeholder="dd-mm-yyyy" name="datejoining" required style="width: 96%;padding: 8px;margin: 0 0 8px 0;display: inline-block;border: none;"><br>
+
+            <label for="date"><b>Date of completion:</b></label><br>
+            <input type="date" placeholder="dd-mm-yyyy" name="completiondate" required style="width: 96%;padding: 8px;margin: 0 0 8px 0;display: inline-block;border: none;"><br>
+
+            <label for="coursefee"><b>courcefee:</b></label>
+            <input type="text" placeholder="Enter fee" name="coursefee" required>
+
+            <label for="instructor"><b>instructor:</b></label>
+          <input type="text" placeholder="Enter instructor" name="instructor" required>
+
+          <label for="AAdharno"><b>Aadharno:</b></label>
+          <input type="text" placeholder="Enter AAdharno" name="aadhar" required>
+
+          <label for="mobile"><b>Mobile:</b></label>
+          <input type="text" placeholder="Enter mobilenumber" name="mobile" required>
+
+          <label for="email"><b>Email:</b></label>
+          <input type="text" placeholder="Enter email" name="email" required>
+
+          <label for="remarks"><b>Remarks:</b></label>
+          <input type="text" placeholder="Enter remarks" name="Remarks" required>
+
+          <button type="submit" class="registerbtn">+JOIN</button>
+          </div>
+    </form>
+</body>
+</html>
+{%endblock%}

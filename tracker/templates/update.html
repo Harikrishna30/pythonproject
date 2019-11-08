@@ -1,0 +1,35 @@
+{% load static %}
+{% include 'index.html'%}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'css/registation.css' %}" crossorigin="anonymous">
+
+</head>
+<script>
+        $('.homeTb').removeClass("active");
+        $('.currentStatusTab').addClass("active");
+        </script>
+<body>
+
+<form method = 'POST'>{% csrf_token %}
+  <div class="container">
+    <!-- <h1>Register</h1> -->
+    <label for="name"><b>Name:</b></label>
+    <input type="text" placeholder="Enter name" value="{{rjstudent.email.name}}" required>
+
+    <label for="date"><b>completiondate:</b></label><br>
+    <input type="date" placeholder="dd-mm-yyyy" name="completiondate" required style="width: 96%;padding: 8px;margin: 0 0 8px 0;display: inline-block;border: none;"><br>
+	
+<button type="submit" class="registerbtn">+Submit</button>
+ </div>
+ </form>
+ </body>
+ </html>
+ {% endblock %}

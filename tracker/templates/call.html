@@ -1,0 +1,74 @@
+{% load static %}
+{% include 'index.html'%}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table,th,td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th,td{text-align:center;}
+.maintitle{display:none;}
+
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  margin: 20px 500px;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<script>
+        $('.homeTb').removeClass("active");
+        $('.callingTab').addClass("active");
+        </script>
+<body>
+<center>
+    <h2>callings</h2>
+</center>
+
+
+<table style="width:100%;font-family: latolight;">
+  <tr>
+    <th>Id</th>
+    <th>Name</th> 
+    <th>Mobile</th>
+    <th>Email</th>
+    <th>Cource</th> 
+    <th>Source</th>
+    <th>LeadStatus</th>
+    <th>DemoDate</th> 
+    <th>Counselor</th>
+    <th>Remarks</th>
+  </tr>
+  {% for i in obj %}
+  <tr>
+      <td>{{i.id}}</td>
+      <td>{{i.name}}</td>
+      <td>{{i.mobile}}</td>
+      <td>{{i.email}}</td>
+      <td>{{i.course}}</td>
+      <td>{{i.source}}</td>
+      <td>{{i.leadstatus}}</td>
+      <td>{{i.demodate}}</td>
+      <td>{{i.counsler}}</td>
+      <td>{{i.remarks}}</td>
+  </tr>
+  {% endfor %}
+</table>
+    <!-- <button type="submit" class="registerbtn">BACK</button><button type="submit" class="registerbtn">NEXT</button> -->
+ </body>
+</html>
+{% endblock %}

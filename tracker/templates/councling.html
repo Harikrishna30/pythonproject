@@ -1,0 +1,42 @@
+{% load static %}
+{% include 'index.html'%}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>callingspage</title>
+    <link rel="stylesheet" href="{% static 'css/registation.css' %}" crossorigin="anonymous">
+    <script>
+            $('.homeTb').removeClass("active");
+            $('.councelTab').addClass("active");
+            </script>
+</head>
+
+    
+<body>
+<form method = 'POST'>{% csrf_token %}
+    <div class="container">
+            <center>
+                    <h2>Counclling</h2>
+                </center>
+    <label for="course"><b>course:</b></label>
+         <input type="text" placeholder="default" name="course" list="course"required>
+         <datalist id="course">
+            <option value="Python">
+            <option value="Data science">
+            <option value="Big Data">
+          </datalist>
+    
+        <label for="date"><b>Demo-date:</b></label><br>
+        <input type="date" placeholder="dd-mm-yyyy" name="demodate" required style="width: 96%;padding: 8px;margin: 0 0 8px 0;display: inline-block;border: none;"><br>
+        <button type="submit" class="registerbtn">FIND</button>
+
+    </div>
+    </form>
+</body>
+</html>
+{% endblock %}

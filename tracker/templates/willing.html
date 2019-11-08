@@ -1,0 +1,35 @@
+{% load static %}
+{% include 'index.html'%}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>willingspage</title>
+    <link rel="stylesheet" href="{% static 'css/registation.css' %}" crossorigin="anonymous">
+    <script>
+            $('.homeTb').removeClass("active");
+            $('.callingTab').addClass("active");
+            </script>
+</head>
+
+    
+<body>
+<form method = 'POST'>{% csrf_token %}
+    <div class="container">
+            <center>
+                    <h2>Update</h2>
+            </center>
+                <label>Name:</label><br>
+                <input type="text" name="name" value="{{willer.name}}"><br>
+    
+        <label for="date"><b>Demo-date:</b></label><br>
+        <input type="date" placeholder="dd-mm-yyyy" name="demodate" value="{{willer.demodate}}" required style="width: 96%;padding: 8px;margin: 0 0 8px 0;display: inline-block;border: none;"><br>
+        <button type="submit" class="registerbtn">Update</button>
+
+    </div>
+    </form>
+</body>
+</html>
+{% endblock %}

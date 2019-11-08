@@ -1,0 +1,81 @@
+{% load static %}
+{% include 'index.html'%}
+
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" crossorigin="anonymous">
+
+<style>
+table,th,td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th,td{text-align:center;}
+.maintitle{display:none;}
+
+.registerbtn {
+  background-color: #4CAF50;
+  color: white;
+  margin: 20px 500px;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.registerbtn:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<script>
+        $('.homeTb').removeClass("active");
+        $('.councelTab').addClass("active");
+        </script>
+<body>
+<center>
+    <h2>callings</h2>
+</center>
+
+
+<table style="width:100%;font-family: latolight;">
+  <tr>
+    <th>Id</th>
+    <th>Name</th> 
+    <th>Mobile</th>
+    <th>Email</th>
+    <th>Cource</th> 
+    <th>Source</th>
+    <th>LeadStatus</th>
+    <th>DemoDate</th> 
+    <th>Counselor</th>
+    <th>Remarks</th>
+    <th>Join</th>
+    <th>Willing</th>
+    <th>Dead</th>
+  </tr>
+  {% for i in obj %}
+  <tr>
+      <td>{{i.id}}</td>
+      <td>{{i.name}}</td>
+      <td>{{i.mobile}}</td>
+      <td>{{i.email}}</td>
+      <td>{{i.course}}</td>
+      <td>{{i.source}}</td>
+      <td>{{i.leadstatus}}</td>
+      <td>{{i.demodate}}</td>
+      <td>{{i.counsler}}</td>
+      <td>{{i.remarks}}</td>
+      <td><a href="{% url 'joiningspage' i.id %}" class="btn btn-success" role="button" aria-pressed="true">Join</a>
+      </td>
+      <td><a href="{% url 'willingpage' i.id %}" class="btn btn-warning " role="button" aria-pressed="true">Willing</a></td>
+      <td><a href="{% url 'dead' i.id %}" class="btn btn-danger" role="button" aria-pressed="true">Dead</a></td>
+  </tr>
+  {% endfor %}
+</table>
+    <!-- <button type="submit" class="registerbtn">BACK</button><button type="submit" class="registerbtn">NEXT</button> -->
+</body>
+</html>
+{% endblock %}
